@@ -36,7 +36,7 @@ namespace OtoServisSatis.Data
             modelBuilder.Entity<Marka>().Property(m => m.Ad).IsRequired().HasColumnType("varchar(50)");
             modelBuilder.Entity<Rol>().Property(m => m.Ad).IsRequired().HasColumnType("varchar(50)");
 
-            // Seed data ekliyoruz. Migration sırasında bu veriler otomatik olarak eklenir.
+            // Seed data ekliyoruz. Migration sırasında bu datalar otomatik olarak eklenir.
             modelBuilder.Entity<Rol>().HasData(new Rol
             {
                 Id = 1,

@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OtoServisSatis.Service\OtoServisSatis.Service.csproj" />
+  </ItemGroup>
+
 </Project>
