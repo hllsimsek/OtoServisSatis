@@ -1,0 +1,41 @@
+﻿@model OtoServisSatis.Entities.Rol
+
+@{
+    ViewData["Title"] = "Rol Düzenle";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Rol Düzenle</h1>
+        <p class="page-subtitle">Mevcut rol bilgilerini güncelleyin.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Rol Bilgileri</h2>
+            </div>
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Ad" class="form-label">Rol Adı</label>
+                    <input asp-for="Ad" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn-date-picker">
+                    <i class="bi bi-check-lg"></i>
+                    <span>Güncelle</span>
+                </button>
+                <a asp-action="Index" class="btn-quick-action">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Listeye Dön</span>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

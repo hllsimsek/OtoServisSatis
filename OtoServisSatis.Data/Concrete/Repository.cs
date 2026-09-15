@@ -85,10 +85,5 @@ namespace OtoServisSatis.Data.Concrete
         {
             _context.Update(entity);
         }
-
-        void IRepository<T>.Save()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

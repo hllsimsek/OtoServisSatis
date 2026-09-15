@@ -1,0 +1,41 @@
+﻿@model OtoServisSatis.Entities.Rol
+
+@{
+    ViewData["Title"] = "Rol Sil";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Rol Sil</h1>
+        <p class="page-subtitle">Bu işlem geri alınamaz.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Silmek İstediğinize Emin Misiniz?</h2>
+            </div>
+
+            <dl class="row">
+                <dt class="col-sm-3">Rol Adı</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+            </dl>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn-date-picker text-danger">
+                    <i class="bi bi-trash"></i>
+                    <span>Evet, Sil</span>
+                </button>
+                <a asp-action="Index" class="btn-quick-action">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Vazgeç</span>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

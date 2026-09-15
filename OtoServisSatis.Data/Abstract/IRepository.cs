@@ -18,7 +18,7 @@ namespace OtoServisSatis.Data.Abstract
 
         void Delete(T entity);
 
-        void Save();
+        int Save();
 
         // Asenkron Metotlar
 
