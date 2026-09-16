@@ -1,0 +1,69 @@
+﻿/* =========================================================
+   OtoServisSatis - Admin Panel Özel Tablo Stilleri
+   Bu dosya main.css'in ÜZERİNE eklenir, onu değiştirmez.
+   ========================================================= */
+
+/* 1) Grid işlem menüsündeki (Düzenle/Detay/Sil) ikonların renklenmesi */
+.dropdown-menu-custom .dropdown-item i.bi-pencil {
+    color: #3b82f6; /* mavi - Düzenle */
+}
+
+.dropdown-menu-custom .dropdown-item i.bi-eye {
+    color: #0891b2; /* camgöbeği - Detay */
+}
+
+.dropdown-menu-custom .dropdown-item.text-danger i.bi-trash {
+    color: #ef4444; /* kırmızı - Sil */
+}
+
+/* Hover durumunda hepsine hafif bir arka plan tonu + ikon koyulaşması */
+.dropdown-menu-custom .dropdown-item:hover {
+    background-color: #f3f4f6;
+}
+
+    .dropdown-menu-custom .dropdown-item:hover i.bi-pencil {
+        color: #2563eb;
+    }
+
+    .dropdown-menu-custom .dropdown-item:hover i.bi-eye {
+        color: #0e7490;
+    }
+
+.dropdown-menu-custom .dropdown-item.text-danger:hover {
+    background-color: #fef2f2;
+}
+
+    .dropdown-menu-custom .dropdown-item.text-danger:hover i.bi-trash {
+        color: #dc2626;
+    }
+
+/* 2) Kolonlar arasında VE tablonun sol/sağ dış kenarında çizgi */
+.card .table th,
+.card .table td {
+    border-right: 1px solid #e5e7eb;
+}
+
+    .card .table th:first-child,
+    .card .table td:first-child {
+        border-left: 1px solid #e5e7eb;
+    }
+
+        .card .table td:first-child .dropdown {
+            display: flex;
+            justify-content: center;
+        }
+
+/* 3) thead ile tbody arasında ton farkı */
+.card .table thead th {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+}
+
+.card .table tbody td {
+    background-color: #ffffff;
+}
+
+.card .table tbody tr:hover td {
+    background-color: #fafafa;
+}
