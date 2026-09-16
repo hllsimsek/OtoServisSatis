@@ -1,0 +1,85 @@
+﻿@model IEnumerable<OtoServisSatis.Entities.Kullanici>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Kullanıcılar</h1>
+        <p class="page-subtitle">Sistem kullanıcılarını yönetin.</p>
+    </div>
+    <a asp-action="Create" class="btn-date-picker">
+        <i class="bi bi-plus-lg"></i>
+        <span>Yeni Kullanıcı Ekle</span>
+    </a>
+</div>
+
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card" style="overflow: visible;">
+            <div class="card-header">
+                <h2 class="card-title">Kullanıcı Listesi</h2>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>@Html.DisplayNameFor(model => model.Ad)</th>
+                        <th>@Html.DisplayNameFor(model => model.Soyad)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <th>@Html.DisplayNameFor(model => model.Telefon)</th>
+                        <th>@Html.DisplayNameFor(model => model.KullaniciAdi)</th>
+                        <th>@Html.DisplayNameFor(model => model.Aktif)</th>
+                        <th>@Html.DisplayNameFor(model => model.Rol)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                            aria-label="İşlemler">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-custom">
+                                        <li>
+                                            <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
+                                                <i class="bi bi-pencil"></i> Düzenle
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">
+                                                <i class="bi bi-eye"></i> Detay
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@item.Id">
+                                                <i class="bi bi-trash"></i> Sil
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+                            <td>@Html.DisplayFor(modelItem => item.KullaniciAdi)</td>
+                            <td>@(item.Aktif ? "Aktif" : "Pasif")</td>
+                            <td>@item.Rol?.Ad</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
