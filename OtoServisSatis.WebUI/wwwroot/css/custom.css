@@ -67,3 +67,13 @@
 .card .table tbody tr:hover td {
     background-color: #fafafa;
 }
+
+.input-validation-error {
+    border-color: #ef4444 !important;
+}
+
+.card .table th:first-child,
+.card .table td:first-child {
+    width: 48px;
+    text-align: center;
+}

@@ -10,7 +10,7 @@
         <h1 class="page-title">Kullanıcılar</h1>
         <p class="page-subtitle">Sistem kullanıcılarını yönetin.</p>
     </div>
-    <a asp-action="Create" class="btn-date-picker">
+    <a asp-action="Create" class="btn-quick-action">
         <i class="bi bi-plus-lg"></i>
         <span>Yeni Kullanıcı Ekle</span>
     </a>
@@ -53,11 +53,11 @@
                                                 <i class="bi bi-pencil"></i> Düzenle
                                             </a>
                                         </li>
-                                        <li>
+                                        @*                                         <li>
                                             <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">
                                                 <i class="bi bi-eye"></i> Detay
                                             </a>
-                                        </li>
+                                        </li> *@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>

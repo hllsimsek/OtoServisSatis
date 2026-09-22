@@ -1,0 +1,78 @@
+﻿@model OtoServisSatis.Entities.Kullanici
+
+@{
+    ViewData["Title"] = "Yeni Kullanıcı Ekle";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Yeni Kullanıcı Ekle</h1>
+        <p class="page-subtitle">Sisteme yeni bir kullanıcı ekleyin.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Kullanıcı Bilgileri</h2>
+            </div>
+
+            <form asp-action="Create" method="post">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Ad" class="form-label">Ad</label>
+                        <input asp-for="Ad" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Soyad" class="form-label">Soyad</label>
+                        <input asp-for="Soyad" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">E-posta</label>
+                        <input asp-for="Email" class="form-control" type="email" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Telefon" class="form-label">Telefon</label>
+                        <input asp-for="Telefon" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="KullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                        <input asp-for="KullaniciAdi" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Sifre" class="form-label">Şifre</label>
+                        <input asp-for="Sifre" class="form-control" type="password" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="RolId" class="form-label">Rol</label>
+                        <select asp-for="RolId" asp-items="ViewBag.Roller" class="form-select">
+                            <option value="">-- Rol Seçiniz --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end">
+                        <div class="form-check">
+                            <input asp-for="Aktif" class="form-check-input" />
+                            <label asp-for="Aktif" class="form-check-label">Aktif</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn-date-picker">
+                        <i class="bi bi-check-lg"></i>
+                        <span>Kaydet</span>
+                    </button>
+                    <a asp-action="Index" class="btn-quick-action">
+                        <i class="bi bi-arrow-left"></i>
+                        <span>Listeye Dön</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
