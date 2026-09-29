@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
+using Microsoft.AspNetCore.Identity;
 
 namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
 {
@@ -10,34 +11,36 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
     {
         private readonly IService<Kullanici> _service;
         private readonly IService<Rol> _serviceRol;
+        private readonly IPasswordHasher<Kullanici> _passwordHasher;
 
-        public KullaniciController(IService<Kullanici> service, IService<Rol> serviceRol)
+        public KullaniciController(IService<Kullanici> service, IService<Rol> serviceRol, IPasswordHasher<Kullanici> passwordHasher)
         {
             _service = service;
             _serviceRol = serviceRol;
+            _passwordHasher = passwordHasher;
         }
 
-        // GET: KullaniciController
+        [HttpGet]
         public ActionResult Index()
         {
             var kullanicilar = _service.GetAll();
+            var roller = _serviceRol.GetAll();
+
+            foreach (var item in kullanicilar)
+            {
+                item.Rol = roller.FirstOrDefault(r => r.Id == item.RolId);
+            }
+
             return View(kullanicilar);
         }
 
-        // GET: KullaniciController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: KullaniciController/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.Roller = new SelectList(_serviceRol.GetAll(), "Id", "Ad");
             return View();
         }
 
-        // POST: KullaniciController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Kullanici kullanici)
@@ -46,6 +49,7 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
             {
                 try
                 {
+                    kullanici.Sifre = _passwordHasher.HashPassword(kullanici, kullanici.Sifre);
                     _service.Add(kullanici);
                     _service.Save();
                     return RedirectToAction(nameof(Index));
@@ -60,7 +64,6 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
             return View();
         }
 
-        // GET: KullaniciController/Edit/5
         public ActionResult Edit(int id)
         {
             var kullanici = _service.Find(id);
@@ -69,7 +72,6 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
             return View(kullanici);
         }
 
-        // POST: KullaniciController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Kullanici kullanici)
@@ -98,25 +100,34 @@ namespace OtoServisSatis.WebUI.Areas.Admin.Controllers
             return View(kullanici);
         }
 
-        // GET: KullaniciController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: KullaniciController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
+            var kullanici = _service.Find(id);
+
+            if (kullanici == null)
+            {
+                return NotFound();
+            }
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                _service.Delete(kullanici);
+                _service.Save();                
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Kullanıcı silinirken bir hata oluştu.");
             }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View();
         }
     }
 }
