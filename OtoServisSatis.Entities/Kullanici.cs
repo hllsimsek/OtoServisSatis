@@ -8,11 +8,11 @@ namespace OtoServisSatis.Entities
 
         public int RolId{ get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} Boş Bırakılamaz")]
         [StringLength(50)]
         public string  Ad { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="{0} Boş Bırakılamaz")]
         [StringLength(50)]
         public string Soyad { get; set; }
 
@@ -28,7 +28,7 @@ namespace OtoServisSatis.Entities
         public string KullaniciAdi { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(256)]
         public string Sifre { get; set; }
 
         [Required]

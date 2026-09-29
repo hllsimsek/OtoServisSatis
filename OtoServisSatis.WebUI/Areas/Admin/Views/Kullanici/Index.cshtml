@@ -62,7 +62,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@item.Id">
+                                            <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">
                                                 <i class="bi bi-trash"></i> Sil
                                             </a>
                                         </li>
@@ -83,3 +83,28 @@
         </div>
     </div>
 </div>
+
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kaydı Sil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>@item.Ad @item.Soyad</strong> kullanıcısını silmek istediğinize emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-quick-action" data-bs-dismiss="modal">Vazgeç</button>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                        <button type="submit" class="btn-quick-action btn-danger-solid">
+                            Evet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

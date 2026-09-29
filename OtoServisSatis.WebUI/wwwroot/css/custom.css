@@ -1,9 +1,6 @@
-﻿/* =========================================================
-   OtoServisSatis - Admin Panel Özel Tablo Stilleri
-   Bu dosya main.css'in ÜZERİNE eklenir, onu değiştirmez.
-   ========================================================= */
-
-/* 1) Grid işlem menüsündeki (Düzenle/Detay/Sil) ikonların renklenmesi */
+﻿/* ================================== Grid ======================================== */
+ 
+/*1) Grid işlem menüsündeki (Düzenle/Detay/Sil) ikonların renklenmesi */
 .dropdown-menu-custom .dropdown-item i.bi-pencil {
     color: #3b82f6; /* mavi - Düzenle */
 }
@@ -77,3 +74,38 @@
     width: 48px;
     text-align: center;
 }
+
+/* ==========================================================================================*/
+
+/* ======================================= Pop-up ==========================================*/
+
+/* Modal tasarımı */
+.modal-content {
+    border-radius: 16px;
+    border: none;
+}
+
+.modal-backdrop.show {
+    background-color: #000000;
+    opacity: 0.6;
+}
+
+/* Silme onay butonu */
+.btn-danger-solid {
+    background-color: #dc2626;
+    color: #ffffff !important;
+}
+
+    .btn-danger-solid:hover,
+    .btn-danger-solid:focus,
+    .btn-danger-solid:active {
+        background-color: #b91c1c !important;
+        color: #ffffff !important;
+    }
+
+/* Daha önce inline style="overflow: visible;" ile yaptığımız şeyin class hali */
+.card-overflow-visible {
+    overflow: visible;
+}
+
+/* ======================================= Pop-up ==========================================*/

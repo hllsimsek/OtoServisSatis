@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using OtoServisSatis.Data;
+using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
 using OtoServisSatis.Service.Concrete;
 
@@ -10,6 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DatabaseContext>();
 
 builder.Services.AddTransient(typeof (IService<>), typeof(Service<>));
+
+builder.Services.AddScoped<IPasswordHasher<Kullanici>, PasswordHasher<Kullanici>>();
 
 var app = builder.Build();
 
